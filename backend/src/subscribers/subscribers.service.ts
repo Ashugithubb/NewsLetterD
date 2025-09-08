@@ -38,8 +38,10 @@ export class SubscribersService {
     if (!subscriber) throw new NotFoundException()
 
     subscriber!.subscribed = false;
+    const id = subscriber.id
 
-    return await this.subscriberRepo.save(subscriber);
+
+    return await this.subscriberRepo.update(id,subscriber);
   }
 
 
