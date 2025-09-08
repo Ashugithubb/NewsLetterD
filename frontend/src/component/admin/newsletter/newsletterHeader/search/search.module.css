@@ -1,0 +1,9 @@
+.searchBar{
+display: flex !important;
+width: 300px !important;
+align-items: center !important;
+gap: 8px !important;
+flex-shrink: 0 !important;
+border-radius: 12px !important;
+background: #F5F5F5 !important;
+}

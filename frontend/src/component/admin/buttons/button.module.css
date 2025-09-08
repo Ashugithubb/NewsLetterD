@@ -1,0 +1,33 @@
+.box {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    justify-content: space-between;
+}
+.newsletter{
+text-transform:none !important;
+border-radius: 12px 0 0 12px !important;
+    background: #F1B300 !important;
+}
+.subscription{
+    text-transform:none !important;
+     border-radius: 0 12px 12px 0 !important;
+    background: white !important;
+    color: black !important;
+}
+.create{
+    text-transform:none !important;
+    width:10%;
+     border-radius: 12px !important;
+    background: #F1B300 !important;
+}
+
+.newsletterText{
+color: #FFF;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}

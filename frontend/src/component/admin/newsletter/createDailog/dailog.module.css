@@ -1,0 +1,45 @@
+.createText {
+    color: #2D3748 !important;
+    font-family: Nunito !important;
+    font-size: 24px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 120% !important;
+}
+
+.mainBox {
+    display: flex !important;
+    width: 462px;
+    flex-direction: column;
+    gap: 16px !important;
+    border-radius: 12px;
+    background: #FFF;
+}
+
+.newTitle {
+    color: #A0AEC0 !important;
+    font-family: Nunito !important;
+    font-size: 13px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 125% !important;
+    letter-spacing: 0.13px !important;
+}
+
+.button{
+    display: flex !important;
+    width: 150px !important;
+    padding: var(--Scales-Buttons-Top-bottom-Padding, 10px) var(--Scales-Buttons-left-right-Padding, 16px) !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: var(--Scales-Spaces-X-Small, 8px) !important;
+    border-radius: 12px !important;
+    background: #FAB900 !important;
+    color:white !important;
+}
+.button:hover{
+    background:white!important ;
+    border:1px solid #FAB900 !important;
+     border-radius: 12px !important;
+     color:#FAB900!important
+}

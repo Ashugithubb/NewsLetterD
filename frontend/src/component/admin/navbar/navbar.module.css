@@ -1,0 +1,10 @@
+.navbar {
+    display: flex !important;
+    height: 72px !important;
+    padding: 0 156px !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    border-bottom: 2px solid #FAB900 !important;
+    background: var(--Neutral-White, #FFF) !important;
+}

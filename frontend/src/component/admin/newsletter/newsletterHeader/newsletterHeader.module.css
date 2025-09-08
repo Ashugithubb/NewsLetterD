@@ -1,0 +1,18 @@
+.newsletter{
+color: var(--Font-Color, #2D3748) !important;
+font-family: Nunito !important;
+font-size: 32px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: 140% !important; 
+}
+
+.searchBar{
+display: flex;
+width: 300px;
+align-items: center;
+gap: 8px;
+flex-shrink: 0;
+border-radius: 12px;
+background: #F5F5F5;
+}
