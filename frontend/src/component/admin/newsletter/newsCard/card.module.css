@@ -2,22 +2,21 @@
     display: flex;
     padding: 16px;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
     align-self: stretch;
     align-items: flex-start;
-    flex: 1 0 0;
     border-radius: 8px;
     border: 1px solid var(--Border-Disabled, #9E9E9E);
     background: #FFF;
-    width:300px
+    width: 100%;
+    max-width: 18% !important;
+    justify-content: space-between !important;
+    cursor: pointer;
 }
 
-.innerBox{
-display: flex;
-padding: 16px;
-flex-direction: column;
-align-items: flex-start;
-gap: 16px;
-align-self: stretch;
+.innerBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
 }

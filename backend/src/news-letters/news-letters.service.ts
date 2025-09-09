@@ -8,6 +8,7 @@ import { MailService } from 'src/mail/mail.service';
 import { SubscribersService } from 'src/subscribers/subscribers.service';
 import { SubscriberRepository } from 'src/subscribers/repository/subscriber-repo';
 import { AdminRepository } from 'src/admin/repository/adminRepo';
+import { GetNewsLetterQueryDto } from './dto/get-newsLetter.dto';
 
 
 @Injectable()
@@ -41,8 +42,8 @@ export class NewsLettersService {
       })
 
       users.map((u) => {
-        const nameValue = u.email.slice(0, 5)
-        const name = nameValue;
+        const username = u.email.split('@')[0];
+        const name = username;
         const email = u.email
         const content = emailContent;
         this.mailService.sendNewsLetterMail({ email, name, content });
@@ -52,8 +53,33 @@ export class NewsLettersService {
 
 
 
-async findAll() {
-    return await this.newsLetterRepo.find();
+  async findAll(query: GetNewsLetterQueryDto) {
+    const {
+      page = 1,
+      limit = 5,
+      search } = query;
+    const qb = this.newsLetterRepo
+      .createQueryBuilder("news")
+
+    if (search) {
+      qb.andWhere(
+        '(news.title ILIKE :search OR news.description ILIKE :search)',
+        { search: `%${search}%` }
+      );
+    }
+    const [newsletter, total] = await qb
+      .skip((page - 1) * limit)
+      .take(limit)
+      .getManyAndCount();
+    return {
+      total,
+      page,
+      limit,
+      newsletter,
+    };
+
+
+    // return await this.newsLetterRepo.find();
   }
   // async publishNewsLetter(createNewsLetterDto: CreateNewsLetterDto) {
 

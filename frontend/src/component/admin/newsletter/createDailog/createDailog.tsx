@@ -14,8 +14,8 @@ import z from 'zod';
 import { newsSchema } from './schema/create';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
-import { useAppDispatch, useAppSelector } from '@/redux/hook/hook';
-import { setTitle } from '@/redux/slice/newstittle.slice';
+import { useAppDispatch, useAppSelector } from '@/app/redux/hook/hook';
+import { setTitle } from '@/app/redux/slice/newstittle.slice';
 import { useRouter } from 'next/navigation';
 interface propInterface {
     openDailog: boolean

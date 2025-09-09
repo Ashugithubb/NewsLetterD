@@ -20,8 +20,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import style from '../login/page.module.css'
-import { useAppDispatch } from '@/redux/hook/hook';
-import { loginUser } from '@/redux/slice/auth.slice';
+import { useAppDispatch } from '@/app/redux/hook/hook';
+import { loginUser } from '@/app/redux/slice/auth.slice';
 
 
 

@@ -9,7 +9,7 @@ export default function Admin() {
         <>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
                 <AdminNavbar />
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "24px",paddingLeft:"15%", paddingRight:"15%" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "24px",paddingLeft:"156px", paddingRight:"156px" }}>
                     <ButtonComponent />
                     <NewsLetter/>
                 </Box>

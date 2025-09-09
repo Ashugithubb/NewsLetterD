@@ -16,6 +16,7 @@ export class MailService {
         context: {
           name: dto.name,
           content: dto.content,
+          email:dto.email,
           year: new Date().getFullYear(),
         },
       });

@@ -12,8 +12,7 @@ export class SubscribersController {
     return this.subscribersService.create(createSubscriberDto);
   }
 
-
-  @Patch()
+  @Get('unsubscribe')
   unSubscribe(@Body() email:string) {
     return this.subscribersService.unSubscribe(email)
   }

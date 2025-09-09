@@ -4,14 +4,14 @@ import Typography from "@mui/material/Typography";
 import style from "../email.module.css"
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useAppDispatch } from "@/redux/hook/hook";
+import { useAppDispatch } from "@/app/redux/hook/hook";
 import { emailSchema } from "@/schema/email.schema";
 
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
-import { SubsriberThunk } from "@/redux/thunk/subscriber";
+import { SubsriberThunk } from "@/app/redux/thunk/subscriber";
 type emailFormData = z.infer<typeof emailSchema>;
 export default function ContentBox() {
     const dispatch = useAppDispatch();

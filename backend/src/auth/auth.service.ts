@@ -20,11 +20,7 @@ export class AuthService {
     async validateUser({ email }: { email: string }) {
         const user = await this.adminService.findOneByEmail(email);
         if (!user) throw new UnauthorizedException("User email not found");
-       console.log("user",user);
          return { email: user.email, id: user.id};
-        // const matched = await this.hasingService.compare(password, user.password);
-        // if (!matched) throw new UnauthorizedException("Invalid password");
-        // return { email: user.email, id: user.id ,role:user.role};
     }
 
 

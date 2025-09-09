@@ -30,7 +30,7 @@ import { AdminModule } from './admin/admin.module';
       from: `"Zenmonk" <${process.env.MAIL_USER}>`,
     },
 
-    preview: true,
+  
     template: {
       dir: process.cwd() + '/src/mail/template',
       adapter: new HandlebarsAdapter(),

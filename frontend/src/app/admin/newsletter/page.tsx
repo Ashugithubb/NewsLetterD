@@ -8,7 +8,7 @@ export default function EditorPage() {
         <>
             <Box sx={{display:"flex",flexDirection:"column",gap:"40px"}}>
                 <AdminNavbar />
-                <Box sx={{ display: "flex", flexDirection: "column", paddingLeft: "13%", paddingRight: "13%", gap: "24px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", paddingLeft: "156px", paddingRight: "156px", gap: "24px" }}>
                     <EditorHeader />
                     <Editor />
                 </Box></Box>
