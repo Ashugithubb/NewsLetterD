@@ -20,7 +20,7 @@ export default function TablePaginationDemo() {
     event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number,
   ) => {
-    dispatch(getNewsLetterThunk({ page: newPage+1 }));
+    dispatch(getNewsLetterThunk({ page: page+1 }));
   };
 
   const handleChangeRowsPerPage = (

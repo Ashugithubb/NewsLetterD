@@ -1,5 +1,5 @@
 "use client"
-import { Box, IconButton, styled, Typography } from "@mui/material";
+import { Box, Card, IconButton, styled, Typography } from "@mui/material";
 import style from './card.module.css'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Switch from '@mui/material/Switch';
@@ -8,6 +8,10 @@ import { useAppDispatch } from "@/app/redux/hook/hook";
 import { SubsriberThunk } from "@/app/redux/thunk/subscriber";
 import { setCardId } from "@/app/redux/slice/card.clicked.slice";
 import { useRouter } from "next/navigation";
+import * as React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const PinkSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -19,9 +23,10 @@ const PinkSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
         backgroundColor: '#FAB900',
     },
-    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track ': {
 
-    }
+    '& .MuiSwitch-switchBase.Mui-disabled + .MuiSwitch-track': {
+        backgroundColor: '#FAB900',
+    },
 }));
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
@@ -30,6 +35,7 @@ interface propInterface {
     title: string
     description: string
     status: string
+    onClick?: () => void;
 }
 
 export default function NewsCard(props: propInterface) {
@@ -37,9 +43,9 @@ export default function NewsCard(props: propInterface) {
     const [checked, setChecked] = useState(true);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(event.target.checked);
-     
+
     };
-    
+
     useEffect(() => {
         if (props?.status === "Published") {
             setChecked(true);
@@ -54,6 +60,7 @@ export default function NewsCard(props: propInterface) {
     return (
         <>
 
+
             <Box className={style.mainBox}>
                 <Box className={style.innerBox}>
                     <Box sx={{ display: "flex", gap: "26px", alignItems: "center" }}>
@@ -63,16 +70,18 @@ export default function NewsCard(props: propInterface) {
                     <Typography>{props.description}
                     </Typography>
 
-
-
                     <Box sx={{ display: "flex", gap: "5px" }}>
-                        <PinkSwitch checked={checked}
-                            //    disabled={checked}
+                        <PinkSwitch
+                            {...label}
+                            checked={checked}
+                            onClick={props.onClick}
+                            disabled={checked}
                             onChange={handleChange}
                             slotProps={{ input: { 'aria-label': 'controlled' } }} />
-                        <Typography sx={{ marginTop: "5px" }}>Publish</Typography></Box>
+                        {checked ? (<Typography sx={{ marginTop: "5px" }}>Published</Typography>) : (<Typography sx={{ marginTop: "5px" }}>Publish</Typography>)} </Box>
                 </Box>
-            </Box>
+            </Box >
+
         </>
     )
 }

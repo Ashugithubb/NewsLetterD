@@ -8,11 +8,11 @@ export const loginUser = createAsyncThunk(
   async (data: loginFormData, thunkAPI) => {
     try {
       const response = await axios.post(
-        'http://localhost:3001/auth/login',
+        'http://localhost:3000/api/login',
         data,
         { withCredentials: true }
       );
-      console.log(data);
+      console.log("next sended response",data);
       return response.data;
     } catch (error: any) {
       const errorMessage =

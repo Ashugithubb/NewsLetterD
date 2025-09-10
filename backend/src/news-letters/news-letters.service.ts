@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { CreateNewsLetterDto } from './dto/create-news-letter.dto';
 import { UpdateNewsLetterDto } from './dto/update-news-letter.dto';
 
@@ -9,6 +9,7 @@ import { SubscribersService } from 'src/subscribers/subscribers.service';
 import { SubscriberRepository } from 'src/subscribers/repository/subscriber-repo';
 import { AdminRepository } from 'src/admin/repository/adminRepo';
 import { GetNewsLetterQueryDto } from './dto/get-newsLetter.dto';
+import { id } from 'zod/v4/locales/index.cjs';
 
 
 @Injectable()
@@ -77,22 +78,69 @@ export class NewsLettersService {
       limit,
       newsletter,
     };
-
-
-    // return await this.newsLetterRepo.find();
   }
-  // async publishNewsLetter(createNewsLetterDto: CreateNewsLetterDto) {
 
-  //   const name = "Ashutosh";
-  //   const email = "itsray650@gmail.com"
-  //   const content = createNewsLetterDto.emailContent;
-  //   this.mailService.sendNewsLetterMail({ email, name, content });
 
+  async publishNewsLetter(id: number) {
+    const newsLetter = await this.newsLetterRepo.findOneBy({ id });
+    if (!newsLetter) throw new NotFoundException();
+
+    newsLetter.status = Status.PUBLISHED
+    await this.newsLetterRepo.update(id, newsLetter);
+
+    const emailContent = newsLetter.emailContent;
+
+    const users = await this.subscriberRepo.find({
+      where: {
+        subscribed: true
+      },
+    })
+
+    users.map((u) => {
+      const username = u.email.split('@')[0];
+      const name = username;
+      const email = u.email
+      const content = emailContent;
+      this.mailService.sendNewsLetterMail({ email, name, content });
+    })
+  }
+
+
+  // async publishNewsLetter(id: number, adminId: number) {
+
+  //   const admin = await this.adminRepo.findOneBy({ id: adminId });
+
+  //   if (!admin) throw new UnauthorizedException('Admin user not found');
+
+  //   const newsLetter = await this.newsLetterRepo.findOneBy({ id });
+  //   if (!newsLetter) throw new NotFoundException();
+
+  //   newsLetter.status = Status.PUBLISHED
+  //   await this.newsLetterRepo.update(id, newsLetter);
+
+  //   const emailContent = newsLetter.emailContent;
+
+  //   const users = await this.subscriberRepo.find({
+  //     where: {
+  //       subscribed: true
+  //     },
+  //   })
+
+  //   users.map((u) => {
+  //     const username = u.email.split('@')[0];
+  //     const name = username;
+  //     const email = u.email
+  //     const content = emailContent;
+  //     this.mailService.sendNewsLetterMail({ email, name, content });
+  //   })
   // }
+
+
+
+
   findOne(id: number) {
     return `This action returns a #${id} newsLetter`;
   }
-
   update(id: number, updateNewsLetterDto: UpdateNewsLetterDto) {
     return `This action updates a #${id} newsLetter`;
   }

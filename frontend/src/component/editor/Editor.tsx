@@ -18,6 +18,7 @@ import axios from "axios";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hook/hook";
 import { NewsLetterThunk } from "@/app/redux/thunk/news-letter";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 
 
@@ -126,13 +127,24 @@ export default function Editor() {
   const { title, description } = useAppSelector((state) => state.newsTitleDescription)
 
   const dispatch = useAppDispatch()
+  const router = useRouter()
+
   const sendEmail = async () => {
-    dispatch(NewsLetterThunk({
+    const res = await dispatch(NewsLetterThunk({
       emailContent: submittedContent,
       title,
       description,
       status: "Published"
     },))
+
+    if (res.meta.requestStatus === 'fulfilled') {
+      toast.success("News Letter Publised Successfully! Redirecting to Admin page");
+      setTimeout(() => {
+        router.push('/admin');
+      }, 3000)
+    } else {
+      toast.error(res.payload || "Unable to Publish NewsLetter try again");
+    }
   };
 
 
@@ -144,9 +156,12 @@ export default function Editor() {
       status: "Draft"
     },));
     if (res.meta.requestStatus === 'fulfilled') {
-      toast("NewsLetter Saved as Draft")
+      toast("NewsLetter Saved as Draft Redirecting to Admin page")
+      setTimeout(() => {
+        router.push('/admin');
+      }, 3000)
     } else {
-      toast.error(res.payload || "Login failed");
+      toast.error(res.payload || "Unable to save  NewsLetter As Draft try again");
     }
   };
 

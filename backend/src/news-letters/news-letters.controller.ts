@@ -17,6 +17,11 @@ export class NewsLettersController {
     // return this.newsLettersService.publishNewsLetter(createNewsLetterDto,id);
   }
 
+  @Post("/:id")
+  saveDraft(@Param('id') id: number) {
+    return this.newsLettersService.publishNewsLetter(id);
+  }
+  
 
   @Get()
   findAll(@Query() query: GetNewsLetterQueryDto) {

@@ -3,12 +3,14 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 import { CreateAuthDto } from './dto/create-auth.dto';
+
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
 
     @Post('login')
     async login(@Body() { email }, @Res({ passthrough: true }) res: Response) {
+        console.log("Inside the controller",email);
         const user = await this.authService.validateUser({ email });
         const payload = { id: user.id, email: user.email };
 
@@ -23,7 +25,6 @@ export class AuthController {
             sameSite: 'strict',
             path: '/',
         });
-
         return { "msg": "Loged out succesfully" }
     }
 
