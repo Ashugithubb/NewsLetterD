@@ -5,6 +5,12 @@ This project implements a complete **Newsletter Management System** with subscri
 It provides a **Landing Page** for subscribers and an **Admin Panel** for administrators to manage newsletters.
 
 ---
+<img width="1920" height="929" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/fce258fd-6b64-4c9b-aad7-6db82ed9799a" />
+<img width="1920" height="1080" alt="Screenshot (12)" src="https://github.com/user-attachments/assets/a93596c9-7be8-4f4d-8421-7f80e3212758" />
+<img width="1920" height="1080" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/c1359e9e-36b7-40c3-bf04-31550a69a1ef" />
+<img width="1920" height="1080" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/1d788604-3f5c-4239-abcc-d88ab6ff0bfd" />
+<img width="1920" height="1080" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/d6589f0c-10b0-4e07-990a-1b3164ab6bcf" />
+
 
 ## 📌 Statement
 
